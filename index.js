@@ -1,8 +1,12 @@
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
 const express = require('express');
 const home = require('./routes/home')
 const genres = require('./routes/genres');
 const customers = require('./routes/customers');
+const movies = require('./routes/movies');
+const rentals = require('./routes/rentals');
 
 mongoose.connect('mongodb://localhost/vidly', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=> console.log('Connected to Vidly successfully...'))
@@ -15,6 +19,8 @@ app.use(express.json());
 app.use('/', home);
 app.use('/genres', genres);
 app.use('/customers', customers);
+app.use('/movies', movies);
+app.use('/rentals', rentals);
 
 
 
